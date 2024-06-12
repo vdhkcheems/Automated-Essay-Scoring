@@ -94,17 +94,6 @@ def average_paragraph_length(text):
     return average_length
 
 
-
-def pred_processor(pred):
-    predic = []
-    for i in range(len(pred)):
-        predic.append(pred[i][0])
-
-    predic = list(map(round, predic))
-    final_pred = [i if i >= 1 else 1 for i in predic]
-    final_pred = [i if i <= 6 else 6 for i in final_pred]
-    return final_pred
-
 def get_avg_w2v_vector(essay, model):
     vectors = [model.wv[word] for word in essay if word in model.wv]
     return np.mean(vectors, axis=0) if vectors else np.zeros(model.vector_size)
